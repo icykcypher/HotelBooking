@@ -1,0 +1,32 @@
+﻿<Page x:Class="HotelBooking.App.Pages.BookingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Bookings">
+    <Grid Margin="10" Width="1280" Height="800">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
+            <Button x:Name="AddBookingButton" Content="Add Booking" Width="120" Margin="0,0,10,0" Click="AddBookingButton_Click"/>
+            <Button x:Name="EditBookingButton" Content="Edit Booking" Width="120" Click="EditBookingButton_Click"/>
+        </StackPanel>
+
+        <DataGrid x:Name="BookingsDataGrid" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True"
+                  SelectionMode="Single" Margin="0,0,0,10" ItemsSource="{Binding Bookings}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Room" Binding="{Binding Room}" />
+                <DataGridTextColumn Header="Guest" Binding="{Binding Guest}" />
+                <DataGridTextColumn Header="Check-In" Binding="{Binding CheckInDate}" />
+                <DataGridTextColumn Header="Check-Out" Binding="{Binding CheckOutDate}" />
+                <DataGridTextColumn Header="Total Price" Binding="{Binding TotalPrice}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button x:Name="DeleteBookingButton" Content="Delete Booking" Grid.Row="2" Width="120" HorizontalAlignment="Right"
+                Click="DeleteBookingButton_Click"/>
+    </Grid>
+</Page>

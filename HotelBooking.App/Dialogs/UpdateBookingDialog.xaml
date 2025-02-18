@@ -1,0 +1,40 @@
+﻿<Window x:Class="HotelBooking.App.Dialogs.UpdateBookingDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Update Booking" Height="234" Width="250">
+    <Grid Margin="0,0,0,1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Booking ID:"/>
+        <TextBox x:Name="BookingIdTextBox" Grid.Row="0" Grid.ColumnSpan="2" Margin="93,0,-25,2" IsReadOnly="True"/>
+
+        <Label Content="Room:" Grid.Row="1"/>
+        <ComboBox x:Name="RoomComboBox" Grid.Row="1" Grid.ColumnSpan="2" Margin="93,1,-25,1"/>
+
+        <Label Content="Guest:" Grid.Row="2"/>
+        <ComboBox x:Name="GuestComboBox" Grid.Row="2" Grid.ColumnSpan="2" Margin="93,1,-25,1"/>
+
+        <Label Content="Check-In Date:" Grid.Row="3"/>
+        <DatePicker x:Name="CheckInDatePicker" Grid.Row="3" Margin="93,2,-25,1"/>
+
+        <Label Content="Check-Out Date:" Grid.Row="4"/>
+        <DatePicker x:Name="CheckOutDatePicker" Grid.Row="4" Margin="93,2,-25,1" SelectedDateChanged="CheckOutDatePicker_SelectedDateChanged"/>
+
+        <Label Content="Total Price:" Grid.Row="5"/>
+        <TextBox x:Name="TotalPriceTextBox" Grid.Row="5" Grid.ColumnSpan="2" Margin="93,1,-25,1"/>
+
+        <Button x:Name="UpdateButton" Content="Update Booking" Grid.Row="5" Click="UpdateButton_Click" Margin="80,43,11,-43"/>
+    </Grid>
+</Window>

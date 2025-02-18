@@ -1,0 +1,42 @@
+﻿<Window x:Class="HotelBooking.App.Dialogs.UpdateRoomDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HotelBooking.App.Dialogs"
+        mc:Ignorable="d"
+        Title="UpdateRoomDialog" Height="312" Width="419">
+    <Grid Margin="0,0,0,1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Room's id:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="4,0,0,0" FontSize="22"/>
+        <TextBox x:Name="RoomIdTextBox" Grid.Row="0" Margin="167,10,-97,10" FontSize="22" Grid.ColumnSpan="2"/>
+
+        <Label Content="Room Number:" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="6,0,0,0" FontSize="22"/>
+        <TextBox x:Name="RoomNumberTextBox" Grid.Row="2" Margin="167,10,-97,10" FontSize="22" Grid.ColumnSpan="2"/>
+
+        <Label Content="Room Type:" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="4,0,0,0" FontSize="22"/>
+        <ComboBox x:Name="RoomTypeTextBox" Grid.Row="1" Margin="167,10,-97,10" FontSize="22" Grid.ColumnSpan="2" SelectionChanged="RoomTypeTextBox_SelectionChanged">
+            <ComboBoxItem Content="Single"></ComboBoxItem>
+            <ComboBoxItem Content="Double"></ComboBoxItem>
+            <ComboBoxItem Content="Twin"></ComboBoxItem>
+            <ComboBoxItem Content="Suite"></ComboBoxItem>
+        </ComboBox>
+
+        <Label Content="Price per night:" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="4,0,0,0" FontSize="22"/>
+        <TextBox x:Name="PriceTextBox" Grid.Row="3" Margin="167,10,-97,10" FontSize="22" Grid.ColumnSpan="2"/>
+
+        <Button x:Name="UpdateButton" Content="Update Room" Grid.Row="4" Margin="105,23,0,-3" HorizontalAlignment="Left" Width="175" Click="UpdateButton_Click" FontSize="22" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>

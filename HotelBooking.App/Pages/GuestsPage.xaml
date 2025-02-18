@@ -1,0 +1,32 @@
+﻿<Page x:Class="HotelBooking.App.Pages.GuestsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Guests">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
+            <Button x:Name="AddGuestButton" Content="Add Guest" Width="100" Margin="0,0,10,0" Click="AddGuestButton_Click"/>
+            <Button x:Name="EditGuestButton" Content="Edit Guest" Width="100" Click="EditGuestButton_Click"/>
+        </StackPanel>
+
+        <DataGrid x:Name="GuestsDataGrid" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True"
+                  SelectionMode="Single" Margin="0,0,0,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                <DataGridTextColumn Header="First Name" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Last Name" Binding="{Binding Surname}" Width="*"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
+                <DataGridTextColumn Header="Phone" Binding="{Binding PhoneNumber}" Width="*"/>
+                <DataGridTextColumn Header="Birth Date" Binding="{Binding BirthDay, StringFormat=d}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button x:Name="DeleteGuestButton" Content="Delete Guest" Grid.Row="2" Width="120" HorizontalAlignment="Right"
+                Click="DeleteGuestButton_Click"/>
+    </Grid>
+</Page>

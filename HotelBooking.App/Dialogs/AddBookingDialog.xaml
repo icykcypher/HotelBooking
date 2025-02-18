@@ -1,0 +1,40 @@
+﻿<Window x:Class="HotelBooking.App.Dialogs.AddBookingDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Add Booking" Height="223" Width="324">
+    <Grid Margin="6,0,0,1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Room:" Grid.Row="0"/>
+        <ComboBox x:Name="RoomComboBox" Grid.Row="0" Width="200" Grid.Column="1"/>
+
+        <TextBlock Text="Guest:" Grid.Row="1"/>
+        <ComboBox x:Name="GuestComboBox" Grid.Row="1" Width="200" Grid.Column="1"/>
+
+        <TextBlock Text="Check-In Date:" Grid.Row="2"/>
+        <DatePicker x:Name="CheckInDatePicker" Grid.Row="2" Grid.Column="1"/>
+
+        <TextBlock Text="Check-Out Date:" Grid.Row="3"/>
+        <DatePicker x:Name="CheckOutDatePicker" Grid.Row="3" Grid.Column="1" SelectedDateChanged="CheckOutDatePicker_SelectedDateChanged"/>
+
+        <TextBlock Text="Total Price:" Grid.Row="3" Margin="0,24,0,-24"/>
+        <TextBox x:Name="TotalPriceTextBox" Grid.Row="4" Width="200" Grid.Column="1"/>
+
+        <TextBlock Text="Payment method:" Grid.Row="4" Margin="0,24,0,-24"/>
+        <Button x:Name="PaymentButton" Content="Add payment method" Grid.Row="5" Grid.Column="1" Margin="19,6,32,-6" Click="PaymentButton_Click"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right"/>
+        <Button Content="Save" Click="SaveButton_Click" Margin="10,43,109,-44" Grid.Row="5" Grid.Column="1"/>
+    </Grid>
+</Window>

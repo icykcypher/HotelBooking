@@ -1,0 +1,50 @@
+[
+    {
+        "Id": 1,
+        "Name": "John",
+        "Surname": "Doe",
+        "Position": "Manager"
+    },
+    {
+        "Id": 2,
+        "Name": "Alice",
+        "Surname": "Smith",
+        "Position": "Receptionist"
+    },
+    {
+        "Id": 3,
+        "Name": "Michael",
+        "Surname": "Brown",
+        "Position": "Housekeeper"
+    },
+    {
+        "Id": 4,
+        "Name": "Sophia",
+        "Surname": "Johnson",
+        "Position": "Chef"
+    },
+    {
+        "Id": 5,
+        "Name": "David",
+        "Surname": "Wilson",
+        "Position": "Maintenance"
+    },
+    {
+        "Id": 6,
+        "Name": "Emma",
+        "Surname": "Davis",
+        "Position": "Security"
+    },
+    {
+        "Id": 7,
+        "Name": "James",
+        "Surname": "Anderson",
+        "Position": "Accountant"
+    },
+    {
+        "Id": 8,
+        "Name": "Olivia",
+        "Surname": "Martinez",
+        "Position": "Driver"
+    }
+]

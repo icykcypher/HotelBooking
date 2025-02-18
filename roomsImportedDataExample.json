@@ -1,0 +1,16 @@
+[
+    {
+        "Id": 101,
+        "RoomNumber": "101",
+        "Type": "Single",
+        "PricePerNight": 150.00,
+        "IsAvailable": true
+    },
+    {
+        "Id": 102,
+        "RoomNumber": "102",
+        "Type": "Twin",
+        "PricePerNight": 100.00,
+        "IsAvailable": true
+    }
+]
