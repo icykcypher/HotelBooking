@@ -1,4 +1,6 @@
-﻿namespace HotelBooking.Domain.Entities
+﻿using HotelBooking.Domain.Enums;
+
+namespace HotelBooking.Domain.Entities
 {
     public class BookingReadDto
     {
@@ -8,5 +10,6 @@
         public DateTime CheckInDate { get; set; }
         public DateTime CheckOutDate { get; set; }
         public decimal TotalPrice { get; set; }
+        public PaymentStatus PaymentStatus { get; set; }
     }
 }

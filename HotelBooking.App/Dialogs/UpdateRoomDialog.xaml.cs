@@ -3,7 +3,6 @@ using HotelBooking.Domain.Entities;
 using HotelBooking.Domain.Enums;
 using HotelBooking.Infrastructure.StorageRepository;
 
-
 namespace HotelBooking.App.Dialogs
 {
     /// <summary>
@@ -12,18 +11,37 @@ namespace HotelBooking.App.Dialogs
     public partial class UpdateRoomDialog : Window
     {
         private readonly BookingStorageRepository repository;
+
+        /// <summary>
+        /// Gets the updated room.
+        /// </summary>
         public Room? UpdatedRoom { get; private set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UpdateRoomDialog"/> class.
+        /// </summary>
+        /// <param name="repository">The repository to be used for data access.</param>
         public UpdateRoomDialog(BookingStorageRepository repository)
         {
             InitializeComponent();
             this.repository = repository;
         }
 
+        /// <summary>
+        /// Handles the selection changed event for the RoomTypeTextBox.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void RoomTypeTextBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-
+            // Handle selection change if needed
         }
 
+        /// <summary>
+        /// Handles the click event for the Update button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(RoomIdTextBox.Text) ||
@@ -53,7 +71,7 @@ namespace HotelBooking.App.Dialogs
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Cannot update employee: {ex.Message}");
+                MessageBox.Show($"Cannot update room: {ex.Message}");
                 this.DialogResult = false;
                 this.Close();
             }

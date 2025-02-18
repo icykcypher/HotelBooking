@@ -1,14 +1,13 @@
 ﻿using System.IO;
 using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Windows;
+using Microsoft.Win32;
+using System.Text.Json;
 using System.Windows.Controls;
 using HotelBooking.App.Dialogs;
 using HotelBooking.Domain.Entities;
-using HotelBooking.Infrastructure.DataImporting;
+using System.Text.Json.Serialization;
 using HotelBooking.Infrastructure.StorageRepository;
-using Microsoft.Win32;
 
 namespace HotelBooking.App.Pages
 {
@@ -20,6 +19,10 @@ namespace HotelBooking.App.Pages
         private List<Room> _rooms = [];
         private readonly BookingStorageRepository repository;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RoomsPage"/> class.
+        /// </summary>
+        /// <param name="repository">Instance of BookingStorageRepository.</param>
         public RoomsPage(BookingStorageRepository repository)
         {
             InitializeComponent();
@@ -27,11 +30,16 @@ namespace HotelBooking.App.Pages
             RoomsGridView.ItemsSource = _rooms;
         }
 
+        /// <summary>
+        /// Handles selection change in RoomsGridView.
+        /// </summary>
         private void RoomsGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
         }
 
+        /// <summary>
+        /// Reads all rooms from the repository and displays them.
+        /// </summary>
         private void ReadRoomsButton_Click(object sender, RoutedEventArgs e)
         {
             RoomsGridView.ItemsSource = null;
@@ -39,6 +47,9 @@ namespace HotelBooking.App.Pages
             RoomsGridView.ItemsSource = _rooms;
         }
 
+        /// <summary>
+        /// Opens a dialog to add a new room.
+        /// </summary>
         private void AddRoomButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -55,10 +66,13 @@ namespace HotelBooking.App.Pages
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"{ex.InnerException}", "Error", MessageBoxButton.OK);
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButton.OK);
             }
         }
 
+        /// <summary>
+        /// Opens a dialog to update an existing room.
+        /// </summary>
         private void UpdateRoomButton_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new UpdateRoomDialog(repository);
@@ -72,6 +86,9 @@ namespace HotelBooking.App.Pages
             }
         }
 
+        /// <summary>
+        /// Deletes the selected room from the repository.
+        /// </summary>
         private void DeleteRoomButton_Click(object sender, RoutedEventArgs e)
         {
             var selectedRoom = RoomsGridView.SelectedItem as Room;
@@ -88,11 +105,16 @@ namespace HotelBooking.App.Pages
             }
         }
 
+        /// <summary>
+        /// Handles selection change in EmployeesGridView.
+        /// </summary>
         private void EmployeesGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
         }
 
+        /// <summary>
+        /// Imports rooms from a JSON file into the database.
+        /// </summary>
         private async void ImportRoomButton_Click(object sender, RoutedEventArgs e)
         {
             var openFileDialog = new OpenFileDialog
@@ -114,7 +136,7 @@ namespace HotelBooking.App.Pages
                         Converters = { new JsonStringEnumConverter() }
                     });
 
-                    foreach (var item in rooms) item.Id = 0; 
+                    foreach (var item in rooms) item.Id = 0;
 
                     if (rooms != null && rooms.Any())
                     {

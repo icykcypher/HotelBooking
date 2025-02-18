@@ -1,21 +1,32 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using HotelBooking.Domain.Entities;
 using HotelBooking.Infrastructure.StorageRepository;
 
 namespace HotelBooking.App.Dialogs
 {
+    /// <summary>
+    /// Interaction logic for UpdateGuestDialog.xaml
+    /// </summary>
     public partial class UpdateGuestDialog : Window
     {
         private readonly BookingStorageRepository repository;
         public Guest? UpdatedGuest { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UpdateGuestDialog"/> class.
+        /// </summary>
+        /// <param name="repository">The repository to be used for data access.</param>
         public UpdateGuestDialog(BookingStorageRepository repository)
         {
             InitializeComponent();
             this.repository = repository;
         }
 
+        /// <summary>
+        /// Handles the click event for the Update button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(GuestIdTextBox.Text) ||

@@ -1,14 +1,21 @@
 ﻿using System.Windows;
 using HotelBooking.Domain.Entities;
-using HotelBooking.Domain.Enums;
 using HotelBooking.Infrastructure.StorageRepository;
 
 namespace HotelBooking.App.Dialogs
 {
+    /// <summary>
+    /// Interaction logic for AddBookingDialog.xaml
+    /// </summary>
     public partial class AddBookingDialog : Window
     {
         private readonly BookingStorageRepository repository;
         private Payment Payment;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AddBookingDialog"/> class.
+        /// </summary>
+        /// <param name="repository">The repository to be used for data access.</param>
         public AddBookingDialog(BookingStorageRepository repository)
         {
             InitializeComponent();
@@ -16,12 +23,20 @@ namespace HotelBooking.App.Dialogs
             LoadComboBoxes();
         }
 
+        /// <summary>
+        /// Loads the room and guest data into the combo boxes.
+        /// </summary>
         private void LoadComboBoxes()
         {
             RoomComboBox.ItemsSource = repository.GetAllRooms().Select(r => r.RoomNumber).ToList();
             GuestComboBox.ItemsSource = repository.GetAllGuests().Select(g => $"{g.Name} {g.Surname}").ToList();
         }
 
+        /// <summary>
+        /// Handles the click event for the Save button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             if (RoomComboBox.SelectedItem == null || GuestComboBox.SelectedItem == null ||
@@ -48,12 +63,22 @@ namespace HotelBooking.App.Dialogs
             Close();
         }
 
+        /// <summary>
+        /// Handles the click event for the Cancel button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
             Close();
         }
 
+        /// <summary>
+        /// Handles the selection changed event for the CheckOutDatePicker.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void CheckOutDatePicker_SelectedDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (CheckOutDatePicker.SelectedDate.HasValue && CheckInDatePicker.SelectedDate.HasValue && CheckOutDatePicker.SelectedDate > CheckInDatePicker.SelectedDate)
@@ -68,6 +93,11 @@ namespace HotelBooking.App.Dialogs
             }
         }
 
+        /// <summary>
+        /// Handles the click event for the Payment button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void PaymentButton_Click(object sender, RoutedEventArgs e)
         {
             if (RoomComboBox.SelectedItem == null || GuestComboBox.SelectedItem == null ||

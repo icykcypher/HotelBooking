@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using HotelBooking.Domain.Entities;
 using HotelBooking.Infrastructure.StorageRepository;
@@ -8,10 +6,17 @@ using HotelBooking.App.Dialogs;
 
 namespace HotelBooking.App.Pages
 {
+    /// <summary>
+    /// Interaction logic for GuestsPage.xaml
+    /// </summary>
     public partial class GuestsPage : Page
     {
         private readonly BookingStorageRepository repository;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GuestsPage"/> class.
+        /// </summary>
+        /// <param name="repository">The repository to be used for data access.</param>
         public GuestsPage(BookingStorageRepository repository)
         {
             InitializeComponent();
@@ -19,11 +24,19 @@ namespace HotelBooking.App.Pages
             LoadGuests();
         }
 
+        /// <summary>
+        /// Loads the list of guests into the data grid.
+        /// </summary>
         private void LoadGuests()
         {
             GuestsDataGrid.ItemsSource = repository.GetAllGuests();
         }
 
+        /// <summary>
+        /// Handles the click event for the Add Guest button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void AddGuestButton_Click(object sender, RoutedEventArgs e)
         {
             var addGuestDialog = new AddGuestDialog(repository);
@@ -33,6 +46,11 @@ namespace HotelBooking.App.Pages
             }
         }
 
+        /// <summary>
+        /// Handles the click event for the Edit Guest button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void EditGuestButton_Click(object sender, RoutedEventArgs e)
         {
             if (GuestsDataGrid.SelectedItem is Guest selectedGuest)
@@ -60,6 +78,11 @@ namespace HotelBooking.App.Pages
             }
         }
 
+        /// <summary>
+        /// Handles the click event for the Delete Guest button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void DeleteGuestButton_Click(object sender, RoutedEventArgs e)
         {
             if (GuestsDataGrid.SelectedItem is Guest selectedGuest)

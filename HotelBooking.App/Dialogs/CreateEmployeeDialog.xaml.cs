@@ -1,18 +1,32 @@
 ﻿using System.Windows;
-using HotelBooking.Domain.Entities;
 using HotelBooking.Domain.Enums;
+using HotelBooking.Domain.Entities;
 
 namespace HotelBooking.App
 {
+    /// <summary>
+    /// Interaction logic for CreateEmployeeDialog.xaml
+    /// </summary>
     public partial class CreateEmployeeDialog : Window
     {
+        /// <summary>
+        /// Gets the created employee.
+        /// </summary>
         public Employee? CreatedEmployee { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CreateEmployeeDialog"/> class.
+        /// </summary>
         public CreateEmployeeDialog()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Handles the click event for the Create button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(FirstNameTextBox.Text) ||

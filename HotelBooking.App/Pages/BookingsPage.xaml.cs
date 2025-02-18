@@ -6,10 +6,18 @@ using HotelBooking.Infrastructure.StorageRepository;
 
 namespace HotelBooking.App.Pages
 {
+    /// <summary>
+    /// Interaction logic for BookingsPage.xaml
+    /// </summary>
     public partial class BookingsPage : Page
     {
         private readonly BookingStorageRepository repository;
         public List<BookingReadDto> Bookings { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BookingsPage"/> class.
+        /// </summary>
+        /// <param name="repository">The repository to be used for data access.</param>
         public BookingsPage(BookingStorageRepository repository)
         {
             InitializeComponent();
@@ -17,6 +25,9 @@ namespace HotelBooking.App.Pages
             LoadBookings();
         }
 
+        /// <summary>
+        /// Loads the list of bookings into the data grid.
+        /// </summary>
         private void LoadBookings()
         {
             Bookings = repository.GetAllBookings()
@@ -27,12 +38,17 @@ namespace HotelBooking.App.Pages
                     Guest = $"{b.Guest?.Name ?? "Unknown"} {b.Guest?.Surname ?? "Unknown"}",
                     CheckInDate = b.CheckInDate,
                     CheckOutDate = b.CheckOutDate,
-                    TotalPrice = b.TotalPrice
+                    TotalPrice = b.TotalPrice,
                 }).ToList();
 
             BookingsDataGrid.ItemsSource = Bookings;
         }
 
+        /// <summary>
+        /// Handles the click event for the Add Booking button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void AddBookingButton_Click(object sender, RoutedEventArgs e)
         {
             var addBookingDialog = new AddBookingDialog(repository);
@@ -42,6 +58,11 @@ namespace HotelBooking.App.Pages
             }
         }
 
+        /// <summary>
+        /// Handles the click event for the Edit Booking button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void EditBookingButton_Click(object sender, RoutedEventArgs e)
         {
             if (BookingsDataGrid.SelectedItem is BookingReadDto selectedBooking)
@@ -69,6 +90,11 @@ namespace HotelBooking.App.Pages
             }
         }
 
+        /// <summary>
+        /// Handles the click event for the Delete Booking button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void DeleteBookingButton_Click(object sender, RoutedEventArgs e)
         {
             if (BookingsDataGrid.SelectedItem is Booking selectedBooking)

@@ -9,13 +9,24 @@ namespace HotelBooking.App.Dialogs
     /// </summary>
     public partial class CreateRoomDialog : Window
     {
+        /// <summary>
+        /// Gets the created room.
+        /// </summary>
         public Room? CreatedRoom { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CreateRoomDialog"/> class.
+        /// </summary>
         public CreateRoomDialog()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Handles the click event for the Create button.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(RoomNumberTextBox.Text) ||
@@ -38,9 +49,14 @@ namespace HotelBooking.App.Dialogs
             this.Close();
         }
 
+        /// <summary>
+        /// Handles the selection changed event for the RoomTypeTextBox.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void RoomTypeTextBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-
+            // Handle selection change if needed
         }
     }
 }
